@@ -37,11 +37,10 @@
         <script src="js/leaflet.photon.js"></script>
         <script src="data/usmboundary_0.js"></script>
         <script src="data/schoolpoint_1.js"></script>
-        <script src="data/usmboundary_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[5.352103784571816,100.29799640207148],[5.359665732015206,100.30834384947892]]);
+        }).fitBounds([[5.351201234439287,100.29652584467368],[5.362978121325616,100.31108574229395]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -136,7 +135,7 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(164,113,88,1.0)',
+                fillColor: 'rgba(229,182,54,1.0)',
                 interactive: true,
             }
         }
@@ -188,7 +187,7 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(213,180,60,1.0)',
+                fillColor: 'rgba(133,182,111,1.0)',
                 interactive: true,
             }
         }
@@ -212,46 +211,6 @@
         });
         bounds_group.addLayer(layer_schoolpoint_1);
         map.addLayer(layer_schoolpoint_1);
-        function pop_usmboundary_2(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Id'] !== null ? autolinker.link(String(feature.properties['Id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_usmboundary_2_0() {
-            return {
-                pane: 'pane_usmboundary_2',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'square',
-                lineJoin: 'bevel',
-                weight: 4.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_usmboundary_2');
-        map.getPane('pane_usmboundary_2').style.zIndex = 402;
-        map.getPane('pane_usmboundary_2').style['mix-blend-mode'] = 'normal';
-        var layer_usmboundary_2 = new L.geoJson(json_usmboundary_2, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_usmboundary_2',
-            layerName: 'layer_usmboundary_2',
-            pane: 'pane_usmboundary_2',
-            onEachFeature: pop_usmboundary_2,
-            style: style_usmboundary_2_0,
-        });
-        bounds_group.addLayer(layer_usmboundary_2);
-        map.addLayer(layer_usmboundary_2);
         setBounds();
         </script>        
     </body>
